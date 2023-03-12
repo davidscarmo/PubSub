@@ -30,4 +30,4 @@ steps:
       - '--allow-unauthenticated'
 
 substitutions:
-  _BUCKET: "CONTAINER_REGISTRY"
+  _BUCKET: "gcf-sources-1037115017278-us-central1"
