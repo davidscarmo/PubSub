@@ -3,6 +3,6 @@ exports.notificacao_pubsub = (event, context) => {
   if (pubsubMessage === 'ALARME') {
     console.log('Alarme Ativado!');
   } else {
-    console.log('Alarme Desativado.');
+    console.log('Alarme Desativado!');
   }
 }
