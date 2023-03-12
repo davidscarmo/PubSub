@@ -1,0 +1,33 @@
+steps:
+  # Clone the repository to the Cloud Build workspace
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/davidscarmo/PubSub', '.']
+
+  # Install dependencies
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  # Build the function's source code
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+
+  # Deploy the function to Cloud Functions
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'functions'
+      - 'deploy'
+      - 'notificacao_pubsub'
+      - '--region'
+      - 'us-central1'
+      - '--source'
+      - '.'
+      - '--runtime'
+      - 'nodejs18'
+      - '--trigger-topic'
+      - 'notificacao_pubsub'
+      - '--entry-point'
+      - 'notificacao_pubsub'
+      - '--allow-unauthenticated'
+
+substitutions:
+  _BUCKET: "CONTAINER_REGISTRY"
