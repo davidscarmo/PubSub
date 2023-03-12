@@ -28,12 +28,8 @@ steps:
       - '--entry-point'
       - 'notificacao_pubsub'
       - '--allow-unauthenticated'
-      - '--logging=CLOUD_LOGGING_ONLY'
-        # Specify logs bucket for Cloud Build
-    env:
-      - 'CLOUD_BUILD_LOGS_BUCKET=gcf-sources-1037115017278-us-central1'
-    # Specify service account for Cloud Build
     options:
-      logging: CLOUD_LOGGING_ONLY
-      serviceAccount: cloudfunction-project-380219@appspot.gserviceaccount.com
-
+      logging: 'CLOUD_LOGGING_ONLY'
+      serviceAccount: 'cloudfunction-project-380219@appspot.gserviceaccount.com'
+      # Specify logs bucket for Cloud Build
+      logsBucket: 'gcf-sources-1037115017278-us-central1'
