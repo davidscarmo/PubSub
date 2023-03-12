@@ -28,6 +28,7 @@ steps:
       - '--entry-point'
       - 'notificacao_pubsub'
       - '--allow-unauthenticated'
+      - '--logging=CLOUD_LOGGING_ONLY'
 
 substitutions:
   _BUCKET: "gcf-sources-1037115017278-us-central1"
