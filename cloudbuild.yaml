@@ -28,7 +28,6 @@ steps:
       - '--entry-point'
       - 'notificacao_pubsub'
       - '--allow-unauthenticated'
-      - '--logging=CLOUD_LOGGING_ONLY'
 
 # Specify logs bucket for Cloud Build
 options:
