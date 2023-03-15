@@ -1,37 +1,10 @@
 steps:
-  # Clone the repository to the Cloud Build workspace
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/davidscarmo/PubSub', '.']
-
-  # Install dependencies
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['install']
-
-  # Build the function's source code
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['run', 'build']
-
-  # Deploy the function to Cloud Functions
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - 'functions'
-      - 'deploy'
-      - 'notificacao_pubsub'
-      - '--region'
-      - 'us-central1'
-      - '--source'
-      - '.'
-      - '--runtime'
-      - 'nodejs18'
-      - '--trigger-topic'
-      - 'notificacao_pubsub'
-      - '--entry-point'
-      - 'notificacao_pubsub'
-      - '--allow-unauthenticated'
-
-# Specify logs bucket for Cloud Build
-options:
-  logging: CLOUD_LOGGING_ONLY
-  env:
-  - 'CLOUD_BUILD_LOGS_BUCKET=gcf-sources-1037115017278-us-central1'
-serviceAccount: cloudfunction-project-380219@appspot.gserviceaccount.com
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - functions
+  - deploy
+  - notificacao_pubsub
+  - --source=.
+  - --trigger-topic=notificacao_pubsub
+  - --runtime=nodejs18
+  - --allow-unauthenticated
