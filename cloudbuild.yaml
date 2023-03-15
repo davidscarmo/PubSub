@@ -1,4 +1,12 @@
 steps:
+- name: "gcr.io/cloud-builders/gcloud"
+  id: topic 
+  entrypoint: bash
+  args:
+  - '-c'
+  - |
+      gcloud pubsub topics create notificacao_pubsub --message-retention-duration=10m || 
+      echo "Topico ja criado!"
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
   - functions
