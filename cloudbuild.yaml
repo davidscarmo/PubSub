@@ -15,4 +15,3 @@ steps:
   - --source=.
   - --trigger-topic=notificacao_pubsub
   - --runtime=nodejs18
-  - --allow-unauthenticated
